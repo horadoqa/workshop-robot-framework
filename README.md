@@ -66,17 +66,26 @@ Com o planejamento e ambiente configurados, é hora de executar os testes. Depen
 
 **Exemplo de Teste Automatizado (API):**
 
-```javascript
-// Exemplo de Teste de API com Jest (utilizando Axios)
-const axios = require('axios');
+```robot framework
+*** Settings ***
+Library           RequestsLibrary
 
-test('Deve retornar 200 ao realizar login', async () => {
-    const response = await axios.post('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', {
-        username: 'Admin',
-        password: 'admin123'
-    });
-    expect(response.status).toBe(200);
-});
+*** Variables ***
+${URL}            https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+${USERNAME}       Admin
+${PASSWORD}       admin123
+
+*** Test Cases ***
+Deve Retornar 200 Ao Realizar Login
+    Create Session    mysession    ${URL}
+    ${response}=      Post Request    mysession    /web/index.php/auth/login    username=${USERNAME}    password=${PASSWORD}
+    Status Should Be  200    ${response}
+
+*** Keywords ***
+Status Should Be
+    [Arguments]    ${expected_status}    ${response}
+    Should Be Equal As Numbers    ${expected_status}    ${response.status_code}
+
 ```
 
 ---
