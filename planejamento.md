@@ -2,11 +2,14 @@
 
 Serão 5 encontros com 1 hora de duração cada
 
+![image](https://github.com/user-attachments/assets/fb703187-1e74-4298-b267-ce6c45f9ec3c)
+
 
 Dia 1
 
 - Falar sobre pirâmide de teste
 - Falar sobre o projeto que será testado: https://front.serverest.dev/login - WEB
+- 
 - 
 
 
